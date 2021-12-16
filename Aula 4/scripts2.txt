@@ -1,0 +1,25 @@
+select * from pessoas
+
+
+select * from pessoas
+where
+id >=2
+and id <=3
+
+
+delete from pessoas
+where
+id >=2
+and id <=3
+
+select * from pessoas
+
+select * from pessoas
+where
+id = 1
+
+delete from pessoas
+where
+id = 1
+
+create table curso
