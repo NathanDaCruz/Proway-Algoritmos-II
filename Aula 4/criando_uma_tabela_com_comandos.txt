@@ -18,3 +18,50 @@ create table usuarios(
     senha text not null,
     obs text
 )
+
+
+insert into usuarios (nome,email,senha) values ("Nathan","nathandcclp@gmail.com","qualquercoisa")
+
+insert into usuarios (nome,email,senha,obs) values ("Willian","williankuhnen@gmail.com","qualquercoisatbm","qualquerCoisa")
+
+insert into usuarios (nome,email,senha,obs) values ("Gustavo","gugadatati@gmail.com","qualquercoisa2","nada")
+
+insert into usuarios (nome,email,senha) values ("Josiani","josiani@adsomos.com","naosei")
+
+select * from usuarios
+
+select * from usuarios
+where
+id=1
+
+update usuarios
+set 
+nome="Nathan",
+obs="deuCerto?"
+where
+id=1
+
+update usuarios
+set
+nome="Willian",
+obs="qualquerCoisa"
+where
+id=2
+
+
+select * from pessoas
+
+insert into pessoas (nome,idade) values ("Nathan",15)
+
+insert into pessoas (nome,idade) values ("Willian",15)
+
+--JUNIOS atualizem as idades para 18 de quem termina com N na tabela de pessoas
+
+update pessoas
+set
+idade=18
+where
+nome like "%n"
+--NÃO ESQUECER DO LIKE
+
+
