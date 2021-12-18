@@ -1,0 +1,83 @@
+select * from usuarios;
+--id 1 é o do Nathan
+
+select * from telefones; 
+
+insert into telefones (tipo,numero_completo,usuario_id) values ("pessoal","47) 99164-9199",1);
+
+select * from usuarios
+inner join telefones on telefones.usuario_id = usuarios.id;
+--O inner é um tipo de relacionamento restrito onde os valores comparados
+--devem existir em ambas tabelas (se não houver não exibe essa linha)
+
+select
+     usu.nome as usuario,
+    usu.email as "e-mail",
+    usu.senha as password,
+     tel.tipo as type,
+     tel.numero_completo as number
+  from usuarios as usu
+inner join telefones as tel on tel.usuario_id = usu.id;
+
+insert into usuarios (nome,email,senha) values ("Rubem","rubem@oliota.com","yh hyuu");
+insert into usuarios (nome,email,senha) values ("Nathan2","nathandcclp@gmail2","*******");
+insert into usuarios (nome,email,senha) values ("Nathan3","nathan3@gmail.com", "*****");
+
+
+-- o left join é um tipo de relacionamento menos restritivo onde
+--basta existir dados na tabela principal, dessa forma os daos da tabela secundaria
+--ficarão nulos (mas os resultados são exibidos em linha)
+
+select
+     usu.nome as usuario,
+    usu.email as "e-mail",
+    usu.senha as password,
+     tel.tipo as type,
+     tel.numero_completo as number
+  from usuarios as usu
+left join telefones as tel on tel.usuario_id = usu.id
+where 
+tel.numero_completo like "%00%"
+and
+tel.numero_completo like "%99";
+
+select
+     usu.nome as usuario,
+    usu.email as "e-mail",
+    usu.senha as password,
+     tel.tipo as type,
+     tel.numero_completo as number
+  from usuarios as usu
+inner join telefones as tel on tel.usuario_id = usu.id;
+
+insert into telefones (tipo,numero_completo,usuario_id)
+values ("pessoal","47) 99212-2362",4);
+
+insert into telefones (tipo,numero_completo,usuario_id)
+values ("pessoal","47) 99999-0000",3);
+
+insert into telefones (tipo,numero_completo,usuario_id)
+values ("pessoal","47) 00000-9999",2);
+
+insert into telefones (tipo,numero_completo,usuario_id)
+values ("pessoal","47) 11111-2222",6);
+
+
+--Criar 2 tabelas
+--1ª tabela SERIES com os campos
+--ID bla bla bla
+--some...
+--ano...
+--genero...
+--diretor...
+
+--2ª tabela EPISODIOS
+--ID bla bla bla
+--titulo NOT NULL
+--sequencia NOT NULL
+--descricao
+--serie_id
+
+
+
+

@@ -1,0 +1,84 @@
+select * from series;
+
+select * from episodios;
+
+insert into series (nome,ano,genero,diretor) values ("rick and morty","2013","ação aventura","Takashi Sano");
+
+insert into series (nome,ano,genero,diretor) values ("vikings","2019","ação","Michael");
+
+insert into series (nome,ano,diretor) values ("La casa de papel","2019","professor");
+
+insert into series (nome,ano,genero) values ("The witcher","2020","fantasia");
+ 
+insert into series (nome,ano,genero) values ("One piece",1997,"anime");
+
+insert into series (nome,ano,genero) values ("Naruto",2002,"Anime");
+
+insert into series (nome,ano,genero) values ("Bleach",1999,"Anime");
+
+select * from series;
+
+select genero,count(*) from series
+group by genero;
+
+select count (*) from series
+where
+ano=2019;
+
+update series 
+set genero="Anime"
+where
+id=5;
+
+select * from series;
+
+select * from episodios;
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (3,"piloto","0","Assistam é bom");
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (3,"Ep-5","5","Morreu o carinha la com uma bazucada no peito");
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (3,"Ep-1","1","Professor não fala nada mas sabe do plano todo");
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (6,"Prova chunin","24","Pode tentar colar, mas não pode ser pego");
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (6,"O retorno de Zabuza","12","Zabuza, o demônio da névoa oculta");
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (6,"Uma morte digna","47","Perdendo com orgulho");
+
+insert into episodios (serie_id,titulo,sequencia,descricao) values (3,"Fim da estrada","3","Quase pegam o professor, mas ele é o principal");
+
+select * from series as se
+left join episodios as ep on ep.serie_id = se.id;
+
+select * from series as se
+inner join episodios as ep on ep.serie_id = se.id
+where se.id=3
+order by ep.sequencia asc
+;
+
+select * from series as se   --chave estrangeira
+inner join episodios as ep on ep.serie_id = se.id
+where se.id=3
+order by ep.sequencia desc
+;
+
+select * from series as se
+left join episodios as ep on ep.serie_id = se.id
+order by se.nome asc,ep.sequencia desc
+;
+
+--Para fazer contagem ou (Agrupadores) é necessario informar quais campos se repetem 
+--e esses campos devem ser os unicos presentes no select
+--os demais campos são os de agrupamento como (count,sum)
+--os campos mencionados no select devem existir no GROUP BY
+select
+se.nome,
+count(*)
+from series as se
+inner join episodios as ep on ep.serie_id = se.id
+group by se.nome
+
+--Para consultas com CONTAGEM ou agrupadores não devo usar LEFT pois
+--sempre que falta o relacionamento é gerado no minimo UMA LINHA vazia
+--que não configura relacionamento
